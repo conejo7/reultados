@@ -23,27 +23,17 @@ public class XmlResultadoRestController {
 	
 	@GetMapping("/xmlresultados")
 	public List<XmlResultado> index(){
-//		Query query = em.createQuery("SELECT obj FROM Cliente obj WHERE obj.cedula = ?1");
-//        query.setParameter(1, cedula);
-//        List<Cliente> cliente = query.getResultList();
-//        
-//        if(cliente.size() > 0) {
-//            return cliente.get(0);
-//        } else
-//            return null;
-//       }
-		List<XmlResultado> resultados = xmlresultadoServices.findAll();
-		for (Iterator iterator = resultados.iterator(); iterator.hasNext();) {
-			XmlResultado xmlResultado = (XmlResultado) iterator.next();
-			if (xmlResultado.getEmpresa().equals("AVON")) {
-				System.out.println();
-				resultados.add(xmlResultado);
-				return resultados;
-			}
-		}
+
 		
-		//return xmlresultadoServices.findAll();
-		return resultados;
+		return xmlresultadoServices.findAll();
+		//return resultados;
+		
+	}
+	
+	@GetMapping("/xmlresultados1")
+	public List<XmlResultado> index1(){
+
+		return xmlresultadoServices.findAllEmpresa();
 		
 	}
 	

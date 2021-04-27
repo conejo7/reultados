@@ -8,4 +8,6 @@ public interface XmlResultadoServices {
 
 	public List<XmlResultado> findAll();
 	
+	public List<XmlResultado> findAllEmpresa();
+	
 }
