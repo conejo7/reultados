@@ -5,6 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 //import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -47,12 +51,32 @@ public class XmlResultadoImp implements XmlResultadoServices {
 		return xmlresultados;
 	}
 	
+	public List<XmlResultado> findAllSLB(Integer pageNo, Integer pageSize, String sortBy)
+    {
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+ 
+        Page<XmlResultado> pagedResult = xmlResultadoDao.findAll(paging);
+         
+        if(pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<XmlResultado>();
+        }
+    }
 	
-//	@Override	
-//	public List<XmlResultado> findAllEmpresa() {
-//		// TODO Auto-generated method stub
-//		return (List<XmlResultado>) xmlResultadoDao.findAll();
-//	}
-//	
+	public List<XmlResultado> findAllSLBCompany(Integer pageNo, Integer pageSize, String sortBy)
+    {
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by("id").ascending());
+ 
+        Page<XmlResultado> pagedResult = xmlResultadoDao.findAll(paging);
+         
+        if(pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<XmlResultado>();
+        }
+    }
+
+
 
 }

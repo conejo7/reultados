@@ -10,4 +10,9 @@ public interface XmlResultadoServices {
 	
 	public List<XmlResultado> findAllEmpresa();
 	
+	public List<XmlResultado> findAllSLB(Integer pageNo, Integer pageSize, String sortBy);
+	
+	public List<XmlResultado> findAllSLBCompany(Integer pageNo, Integer pageSize, String sortBy);
+	
+	
 }
